@@ -9,7 +9,7 @@ from webserver import keep_alive
 # Other Imports
 from datetime import datetime
 from utils import Logger
-from os import getcwd, listdir
+from os import getcwd, listdir, environ
 
 
 def get_token() -> str:
