@@ -45,6 +45,12 @@ class Fun(commands.Cog, name="Jokes and Fun!"):
             match = re.search(r"\bree+\b", lowered_message).string
             await channel.send(match + "E" if match.count("E") >= 3 else "e")
 
+        elif "bruh" in lowered_message:
+            await channel.send("bruh")
+
+        elif "hurb" in lowered_message:
+            await channel.send("hurb")
+
         else:
             for word in self.TRIGGER_WORDS["bark"]:
                 if re.search(rf"\b{word}\b", lowered_message):
