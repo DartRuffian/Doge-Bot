@@ -21,4 +21,4 @@ class CustomEmojis(commands.Cog, name="Custom Emojis"):
 
 
 def setup(bot):
-    bot.add_cog(ClassName(bot))
+    bot.add_cog(CustomEmojis(bot))
