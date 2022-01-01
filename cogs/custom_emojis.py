@@ -15,7 +15,7 @@ class CustomEmojis(commands.Cog, name="Custom Emojis"):
 
     @commands.command(hidden=True)
     @commands.is_owner()
-    def admin_clone(self, emoji: discord.Emoji):
+    async def admin_clone(self, emoji: discord.Emoji):
         emoji_hub = self.bot.get_guild(903452394204065833)
         await emoji_hub.create_custom_emoji(name=emoji.name, image=await emoji.url.read())
 
