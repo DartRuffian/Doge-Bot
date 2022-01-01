@@ -7,11 +7,14 @@ class CustomEmojis(commands.Cog, name="Custom Emojis"):
     """Simple Container for the Bot's custom emojis"""
     def __init__(self, bot):
         self.bot = bot
-        self.reload_emojis()
 
     def reload_emojis(self):
         """Load all custom emojis from the Emoji Hub server to a dictionary"""
         self.bot.custom_emojis = {emoji.name: emoji for emoji in self.bot.get_guild(903452394204065833).emojis}
+
+    @commands.Cog.listener()
+    async def on_ready(self):
+        self.reload_emojis()
 
     @commands.command(hidden=True)
     @commands.is_owner()
