@@ -1,24 +1,41 @@
 {
-  "horny": [
-    "horny",
-    "horni"
-  ],
-  "drinking": [
-    "alcohol",
-    "drinking",
-    "drink"
-  ],
-  "bark": [
-    "squirrel",
-    "cat",
-    "rat",
-    "mouse",
-    "mice",
-    "mailman",
-    "mailmen",
-    "vet",
-    "vacuum",
-    "dog",
-    "doggo"
-  ]
+  "horny": {
+    "image": "no_horny.jpg",
+    "words": [
+      "horny",
+      "horni"
+    ]
+  },
+  "drinking": {
+    "image": "no_drinking.jpg",
+    "words": [
+      "alcohol",
+      "drinking",
+      "drink"
+    ]
+  },
+  "simping": {
+    "image": "no_simping.jpg",
+    "words": [
+      "simping",
+      "simp",
+      "love"
+    ]
+  },
+  "bark": {
+    "image": null,
+    "words": [
+      "squirrel",
+      "cat",
+      "rat",
+      "mouse",
+      "mice",
+      "mailman",
+      "mailmen",
+      "vet",
+      "vacuum",
+      "dog",
+      "doggo"
+    ]
+  }
 }

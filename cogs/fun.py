@@ -52,7 +52,7 @@ class Fun(commands.Cog, name="Jokes and Fun!"):
             await channel.send("hurb")
 
         else:
-            for word in self.TRIGGER_WORDS["bark"]:
+            for word in self.TRIGGER_WORDS["bark"]["words"]:
                 if re.search(rf"\b{word}\b", lowered_message):
                     await channel.send("BARK BARK BARK BARK")
                     break
@@ -62,24 +62,27 @@ class Fun(commands.Cog, name="Jokes and Fun!"):
     )
     async def stop(self, ctx, action):
         is_reply = ctx.message.reference
+        image_to_load = None
 
-        if action.lower() in self.TRIGGER_WORDS["horny"]:
-            image = discord.File(f"{self.bot.BASE_DIR}/resources/no_horny.jpg")
-        elif action.lower() in self.TRIGGER_WORDS["drinking"]:
-            image = discord.File(f"{self.bot.BASE_DIR}/resources/no_drinking.jpg")
-        else:
-            await ctx.send(
-                f"Action: `{action}` was not recognized. Here's a list of all acceptable values:\n" +
-                "\n".join(horny_terms + drinking_terms)
-            )
-            return
+        async with ctx.channel.typing():
+            for category in self.TRIGGER_WORDS.values():
+                if action.lower() in category["words"]:
+                    image_to_load = discord.File(f"{self.bot.BASE_DIR}/resources/{category['image']}")
+                    break
 
-        if is_reply:
-            await ctx.message.delete()
-            message = await ctx.channel.fetch_message(id=is_reply.message_id)
-            await message.reply(file=image)
-        else:
-            await ctx.send(file=image)
+            if image_to_load is None:
+                await ctx.send(
+                    f"Action: `{action}` was not recognized. Here's a list of all acceptable values:\n" +
+                    "\n".join([word for category in self.TRIGGER_WORDS.values() for word in category["words"]])
+                )
+                return
+
+            if is_reply:
+                await ctx.message.delete()
+                message = await ctx.channel.fetch_message(id=is_reply.message_id)
+                await message.reply(file=image_to_load)
+            else:
+                await ctx.send(file=image_to_load)
 
     @commands.command()
     async def pet(self, ctx):
