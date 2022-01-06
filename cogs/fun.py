@@ -63,9 +63,11 @@ class Fun(commands.Cog, name="Jokes and Fun!"):
     async def stop(self, ctx, action):
         is_reply = ctx.message.reference
         image_to_load = None
+        non_bark_trigger_words = {key: value for key, value in self.TRIGGER_WORDS.items() if key != "bark"}
+        print(self.TRIGGER_WORDS)
 
         async with ctx.channel.typing():
-            for category in self.TRIGGER_WORDS.values():
+            for category in non_bark_trigger_words.values():
                 if action.lower() in category["words"]:
                     image_to_load = discord.File(f"{self.bot.BASE_DIR}/resources/{category['image']}")
                     break
@@ -73,7 +75,7 @@ class Fun(commands.Cog, name="Jokes and Fun!"):
             if image_to_load is None:
                 await ctx.send(
                     f"Action: `{action}` was not recognized. Here's a list of all acceptable values:\n" +
-                    "\n".join([word for category in self.TRIGGER_WORDS.values() for word in category["words"]])
+                    "\n".join(', '.join(category["words"]) for category in non_bark_trigger_words.values())
                 )
                 return
 
