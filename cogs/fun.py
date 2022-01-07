@@ -43,7 +43,11 @@ class Fun(commands.Cog, name="Jokes and Fun!"):
 
         elif re.search(r"\bree+\b", lowered_message):
             match = re.search(r"\bree+\b", lowered_message).string
-            await channel.send(match + "E" if match.count("E") >= 3 else "e")
+            if match.count("E") >= 3:
+                match = match.upper() + "E"
+            else:
+                match = match.lower() + "e"
+            await channel.send(match)
 
         elif "bruh" in lowered_message:
             await channel.send("bruh")
