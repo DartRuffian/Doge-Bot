@@ -32,7 +32,7 @@ class Fun(commands.Cog, name="Jokes and Fun!"):
         lowered_message = message.content.lower()
         channel = message.channel
 
-        if "pog" in lowered_message and message.guild.id in self.pog_servers:
+        if re.search(r"\bpog\b", lowered_message) and message.guild.id in self.pog_servers:
             await channel.send(file=discord.File(f"{self.bot.BASE_DIR}/resources/someone_said_pog.jpg"))
 
         elif "what" in lowered_message and "your favorite food" in lowered_message:
