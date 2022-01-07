@@ -68,7 +68,6 @@ class Fun(commands.Cog, name="Jokes and Fun!"):
         is_reply = ctx.message.reference
         image_to_load = None
         non_bark_trigger_words = {key: value for key, value in self.TRIGGER_WORDS.items() if key != "bark"}
-        print(self.TRIGGER_WORDS)
 
         async with ctx.channel.typing():
             for category in non_bark_trigger_words.values():
