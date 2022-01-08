@@ -30,7 +30,7 @@ def create_embed(*, color: str, message: str, footer: str = None, author_info: d
 
 
 def check_guild(guild_id: int) -> bool:
-    return guild_id == 905278647596879913
+    return guild_id in [905278647596879913, 929030336585814106]
 
 
 class JesterLogging(commands.Cog, name="Jester Logging"):
@@ -54,9 +54,9 @@ class JesterLogging(commands.Cog, name="Jester Logging"):
             embed=create_embed(
                 color="red",
                 message=f"The message sent by `{message.author}` in {message.channel.mention} was deleted.",
-                footer=f"Message ID: {message.id}",
+                footer=f"Server: {message.guild.name}\nMessage ID: {message.id}",
                 author_info={"name": message.author, "icon_url": message.author.avatar_url},
-                fields={"Message": message.content}
+                fields={"Message": message.content or '`None`'}
             )
         )
 
@@ -65,11 +65,14 @@ class JesterLogging(commands.Cog, name="Jester Logging"):
         if not check_guild(before.guild.id):
             return
 
+        if not (before.content and after.content):
+            return
+
         await self.log_channel.send(
             embed=create_embed(
                 color="orange",
                 message=f"`{before.author}` edited their [message]({before.jump_url}) in {before.channel.mention}",
-                footer=f"Message ID: {before.id}",
+                footer=f"Server: {before.guild.name}\nMessage ID: {before.id}",
                 author_info={"name": before.author, "icon_url": before.author.avatar_url},
                 fields={"Before": before.content, "After": after.content}
             )
