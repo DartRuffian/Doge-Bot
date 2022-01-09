@@ -23,6 +23,13 @@ class Games(commands.Cog, name="Play Games with Doge! :D"):
         await ctx.send(":D\n*tail wagging sounds*")
 
     @commands.command()
+    async def treat(self, ctx, *, food: str = None):
+        if food.lower() == "chicken nugget":
+            await ctx.send("Thank you for the treat! :D\nBut do you know my favorite treat?")
+        else:
+            await ctx.send("My favorite snack!\n*nom nom nom*")
+
+    @commands.command()
     async def fetch(self, ctx):
         item = choice(self.fetch_items)
         item = item.replace(
