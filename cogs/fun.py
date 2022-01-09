@@ -39,7 +39,7 @@ class Fun(commands.Cog, name="Jokes and Fun!"):
             await channel.send("Chicken nuggets, yum!")
 
         elif "how do i look" in lowered_message:
-            await channel.send(f"If being sexy was a crime, {message.author.mention} would be a law abiding citizen")
+            await channel.send(f"If being sexy was a crime, {message.author.mention} would be a wanted criminal!")
 
         elif match := re.search(r"\bree+\b", lowered_message):
             match = match.string[match.start():match.end()]
