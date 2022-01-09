@@ -1,0 +1,18 @@
+# Doge brought you a...
+a stick
+a bouquet of flowers
+a ouija board
+a scented candle
+a paint brush
+a wallet, you found $<number:5:50> dollars (but Doge took the money back)
+<member>, you decide not to ask how Doge found them
+an invitation to Smash Bros
+freshly made boba
+the correct charger for your phone
+a comfy sweater
+your favorite snack
+a d20, you rolled a <number:1:20>
+a really big and soft blanket
+a bottle of water
+the key you lost
+a tomato? You don't question it at this point

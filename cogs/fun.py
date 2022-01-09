@@ -41,8 +41,9 @@ class Fun(commands.Cog, name="Jokes and Fun!"):
         elif "how do i look" in lowered_message:
             await channel.send(f"If being sexy was a crime, {message.author.mention} would be a law abiding citizen")
 
-        elif re.search(r"\bree+\b", lowered_message):
-            match = re.search(r"\bree+\b", lowered_message).string
+        elif match := re.search(r"\bree+\b", lowered_message):
+            match = match.string[match.start():match.end()]
+
             if match.count("E") >= 3:
                 match = match.upper() + "E"
             else:
@@ -88,10 +89,6 @@ class Fun(commands.Cog, name="Jokes and Fun!"):
                 await message.reply(file=image_to_load)
             else:
                 await ctx.send(file=image_to_load)
-
-    @commands.command()
-    async def pet(self, ctx):
-        await ctx.send(":D\n*tail wagging sounds*")
 
 
 def setup(bot):
