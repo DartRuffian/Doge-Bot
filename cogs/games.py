@@ -42,7 +42,7 @@ class Games(commands.Cog, name="Play Games with Doge! :D"):
             random_number = str(randint(int(min_val), int(max_val)))
             item = item.replace(match, random_number)
 
-        await ctx.send(f"You throw a stick to Doge, and Doge brings back {item}!")
+        await ctx.reply(f"You throw a stick to Doge, and Doge brings back {item}!", mention_author=False)
 
 
 def setup(bot):
