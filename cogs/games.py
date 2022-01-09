@@ -23,7 +23,7 @@ class Games(commands.Cog, name="Play Games with Doge! :D"):
         await ctx.send(":D\n*tail wagging sounds*")
 
     @commands.command()
-    async def treat(self, ctx, *, food: str = None):
+    async def treat(self, ctx, *, food: str = ""):
         if food.lower() == "chicken nugget":
             await ctx.send("Thank you for the treat! :D\nBut do you know my favorite treat?")
         else:
