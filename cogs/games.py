@@ -34,7 +34,7 @@ class Games(commands.Cog, name="Play Games with Doge! :D"):
         item = choice(self.fetch_items)
         item = item.replace(
             "<member>",
-            choice(ctx.guild.members).mention
+            choice([member for member in ctx.guild.members if not member.bot]).mention
         )
         if match := re.search(r"<number:\d+:\d+>", item):
             match = match.string[match.start():match.end()]
