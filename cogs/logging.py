@@ -65,7 +65,7 @@ class JesterLogging(commands.Cog, name="Jester Logging"):
         if not check_guild(before.guild.id):
             return
 
-        if not (before.content and after.content):
+        if not before.content and not after.content:
             return
 
         await self.log_channel.send(
