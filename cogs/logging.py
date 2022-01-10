@@ -65,9 +65,6 @@ class JesterLogging(commands.Cog, name="Jester Logging"):
         if not check_guild(before.guild.id):
             return
 
-        if message.author.id == 368521195940741122:
-            return
-
         if not before.content and not after.content:
             return
 
